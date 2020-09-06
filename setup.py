@@ -27,12 +27,7 @@ REQUIRED_PACKAGES = [
     'scipy >= 1.1.0',
     'slidingwindow >= 0.0.13',
     'tqdm >= 4.23.4',
-    'tensorpack >= 0.8.5',
     'pycocotools'
-]
-
-DEPENDENCY_LINKS = [
-    'git+https://github.com/ppwwyyxx/tensorpack.git#egg=tensorpack',
 ]
 
 EXT = Extension('_pafprocess',
@@ -47,12 +42,11 @@ setuptools.setup(
     name='tf-pose',
     version=_VERSION,
     description=
-    'Deep Pose Estimation implemented using Tensorflow with Custom Architectures for fast inference.',
+    'Deep Pose Estimation implemented using Tensorflow 2.',
     install_requires=REQUIRED_PACKAGES,
-    dependency_links=DEPENDENCY_LINKS,
-    url='https://github.com/ildoonet/tf-pose-estimation/',
-    author='Ildoo Kim',
-    author_email='ildoo@ildoo.net',
+    url='https://github.com/kraftular/tf2-pose-estimation/',
+    author='Ildoo Kim, Adam Kraft',
+    author_email='(ildoo@ildoo.net), adk@mit.edu',
     license='Apache License 2.0',
     package_dir={'tf_pose_data': 'models'},
     packages=['tf_pose_data'] +

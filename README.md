@@ -1,5 +1,7 @@
 # tf-pose-estimation
 
+This is Ildoo Kim's tf-pose-estimation, reworked to use tensorflow 2.3+. See https://github.com/ildoonet/tf-pose-estimation for Ildoo's original repo. I have additionally removed the Docker and ROS stuff.
+
 'Openpose', human pose estimation algorithm, have been implemented using Tensorflow. It also provides several variants that have some changes to the network structure for **real-time processing on the CPU or low-power embedded devices.**
 
 **You can even run this on your macbook with a descent FPS!**
