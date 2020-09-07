@@ -3,11 +3,11 @@ import logging
 import sys
 import time
 
-from tf_pose import common
+from tf2_pose import common
 import cv2
 import numpy as np
-from tf_pose.estimator import TfPoseEstimator
-from tf_pose.networks import get_graph_path, model_wh
+from tf2_pose.estimator import TfPoseEstimator
+from tf2_pose.networks import get_graph_path, model_wh
 
 logger = logging.getLogger('TfPoseEstimatorRun')
 logger.handlers.clear()
@@ -44,8 +44,15 @@ if __name__ == '__main__':
         logger.error('Image can not be read, path=%s' % args.image)
         sys.exit(-1)
 
+    logger.info("warming up")
+    e.inference(image, resize_to_default=(w > 0 and h > 0), upsample_size=args.resize_out_ratio)
+    e.inference(image, resize_to_default=(w > 0 and h > 0), upsample_size=args.resize_out_ratio)
+    e.inference(image, resize_to_default=(w > 0 and h > 0), upsample_size=args.resize_out_ratio)
+    logger.info("done warming up")
+    
     t = time.time()
-    humans = e.inference(image, resize_to_default=(w > 0 and h > 0), upsample_size=args.resize_out_ratio)
+    humans = e.inference(image, resize_to_default=(w > 0 and h > 0),
+                         upsample_size=args.resize_out_ratio)
     elapsed = time.time() - t
 
     logger.info('inference image: %s in %.4f seconds.' % (args.image, elapsed))
